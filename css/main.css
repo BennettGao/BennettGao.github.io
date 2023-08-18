@@ -2340,7 +2340,7 @@ header.header {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #0bffb0;
+  background: #6c4aff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2383,12 +2383,4 @@ header.header {
   .sidebar-dimmer {
     display: none;
   }
-}
-#添加背景图片,
-body {
-  background: url("imagesbackground.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: 50% 50%;
 }
