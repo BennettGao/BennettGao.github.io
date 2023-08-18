@@ -2340,7 +2340,7 @@ header.header {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #b013d0;
+  background: #0bffb0;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2386,7 +2386,7 @@ header.header {
 }
 #添加背景图片,
 body {
-  background: url("MyBlogBennett_blogthemesnextsourceimagesbackground.png");
+  background: url("imagesbackground.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
