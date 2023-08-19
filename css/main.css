@@ -2493,22 +2493,8 @@ header.header {
     padding: 10px 12px;
   }
 }
-/*鼠标样式*/
-* {
-  cursor: url("/images/Arrow.cur"), auto;
-}
-:link {
-  cursor: url("/images/Hand.cur"), auto;
-}
-a,
-span.exturl {
-  cursor: url("/images/Hand.cur"), auto;
-}
-.posts-expand .post-meta time {
-  cursor: url("/images/Hand.cur"), auto;
-}
 body {
-  background: url("/images/backGround.png");
+  background: url("/images/BK.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
