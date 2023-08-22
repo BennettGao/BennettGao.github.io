@@ -2486,7 +2486,7 @@ header.header {
     padding: 8px;
   }
   .posts-expand .post-button {
-    margin: 12px 0;
+    margin: 12px 10;
   }
   .post-block {
     padding: 12px;
@@ -2497,10 +2497,10 @@ header.header {
 }
 /*鼠标样式*/
 * {
-  cursor: url("/images/Arrow.cur"), auto;
+  cursor: url("/images/Arrow.png"), auto;
 }
 :link {
-  cursor: url("/images/Arrow.cur"), auto;
+  cursor: url("/images/Arrow.png"), auto;
 }
 body {
   background: url("images/BK.png");
