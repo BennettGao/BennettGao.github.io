@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bennettg6.gitee.io/myblog/2024/04/06/swagger%E6%8A%A5%E9%94%99/</loc>
+    
+    <lastmod>2024-04-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://bennettg6.gitee.io/myblog/2023/09/13/Linux%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/</loc>
     
     <lastmod>2023-09-13</lastmod>
@@ -49,7 +58,7 @@
 
   <url>
     <loc>https://bennettg6.gitee.io/myblog</loc>
-    <lastmod>2023-09-13</lastmod>
+    <lastmod>2024-07-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -57,7 +66,7 @@
   
   <url>
     <loc>https://bennettg6.gitee.io/myblog/tags/Python/</loc>
-    <lastmod>2023-09-13</lastmod>
+    <lastmod>2024-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -66,21 +75,21 @@
   
   <url>
     <loc>https://bennettg6.gitee.io/myblog/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/</loc>
-    <lastmod>2023-09-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bennettg6.gitee.io/myblog/categories/Python/</loc>
-    <lastmod>2023-09-13</lastmod>
+    <lastmod>2024-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://bennettg6.gitee.io/myblog/categories/java/</loc>
-    <lastmod>2023-09-13</lastmod>
+    <lastmod>2024-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bennettg6.gitee.io/myblog/categories/Python/</loc>
+    <lastmod>2024-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
