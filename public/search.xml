@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>/myblog/2024/04/06/swagger%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<h1 id="解决此错误-无法将apis-com-google-common-base-Predicate-应用于-java-util-function-Predicate"><a href="#解决此错误-无法将apis-com-google-common-base-Predicate-应用于-java-util-function-Predicate" class="headerlink" title="解决此错误:无法将apis(com.google.common.base.Predicate)应用于(java.util.function.Predicate)"></a>解决此错误:无法将apis(com.google.common.base.Predicate)应用于(java.util.function.Predicate)</h1><p>在本篇博客中，我将分享我在完成黑马项目苍穹外卖导入knife4j依赖过程中遇到的报错。</p>
+<p>通过这篇博客，希望能帮助到其他遇到相似问题的，并加深自对问题的理解解决能力</p>
+<p>报错描述</p>
+<p>apis(com.google.common.base.Predicate&lt;springfox.documentation.RequestHandler&gt;)’ in ‘springfox.documentation.spring.web.plugins.ApiSelectorBuilder’ cannot be applied to ‘(java.util.function.Predicate&lt;springfox.documentation.RequestHandler&gt;)</p>
+<p>苍穹外卖提供的knife4j依赖如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">   &lt;groupId&gt;com.github.xiaoymin&lt;/groupId&gt;</span><br><span class="line">   &lt;artifactId&gt;knife4j-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">   &lt;version&gt;3.0.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>配置类如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@Bean</span><br><span class="line">  public Docket docket() &#123;</span><br><span class="line">      ApiInfo apiInfo = new ApiInfoBuilder()</span><br><span class="line">              .title(&quot;苍穹外卖项目接口文档&quot;)</span><br><span class="line">              .version(&quot;2.0&quot;)</span><br><span class="line">              .description(&quot;苍穹外卖项目接口文档&quot;)</span><br><span class="line">              .build();</span><br><span class="line">      Docket docket = new Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">              .apiInfo(apiInfo)</span><br><span class="line">              .select()</span><br><span class="line">              .apis(RequestHandlerSelectors.basePackage(&quot;com.sky.controller&quot;))</span><br><span class="line">              .paths(PathSelectors.any())</span><br><span class="line">              .build();</span><br><span class="line">      return docket;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>在进行调试时发现这个依赖并未生效，访问doc.hmtl为404，想着可能是版本依赖问题，所以将版本改为了3.0.3，进行编译时</p>
+<p>apis(RequestHandlerSelectors.basePackage(“com.sky.controller”))出现报错，apis(com.google.common.base.Predicate&lt;springfox.documentation.RequestHandler&gt;)’ in ‘springfox.documentation.spring.web.plugins.ApiSelectorBuilder’ cannot be applied to ‘(java.util.function.Predicate&lt;springfox.documentation.RequestHandler&gt;)传入参数与需要类型不一致导致，于是进行类型强转发现也没有用，于是查看pom.xml文件，发现导入了swagger2依赖，经过查询发现不能混合Springfox 2.9.2和knife4j依赖 -&gt;删除springfox启动程序，reload后成功启动。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;2.9.2&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>由于Knife4j 使用了 Java 8 函数库，而 springfox-swagger2 使用了 Guava 类库。在旧版本的 springfox-swagger2（例如2.9.2版本）中，<code>RequestHandlerSelectors.basePackage</code>方法期望传入<code>com.google.common.base.Predicate&lt;springfox.documentation.RequestHandler&gt;</code>而不是<code>java.util.function.Predicate&lt;springfox.documentation.RequestHandler&gt;</code>。</p>
+<p>通过以上方法，成功解决了这个报错，并顺进行了接口调试。希望这个经验可以对你有所帮助，如果有任何疑问或其他解决方法欢迎在评论中！</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Linux基础环境配置</title>
     <url>/myblog/2023/09/13/Linux%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<h6 id="1-切换为root用户"><a href="#1-切换为root用户" class="headerlink" title="1.切换为root用户"></a>1.切换为root用户</h6><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[hadoop@localhost ~]$ su -root</span><br></pre></td></tr></table></figure>
@@ -61,27 +82,6 @@
       <categories>
         <category>大数据</category>
       </categories>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/myblog/2024/04/06/swagger%E6%8A%A5%E9%94%99/</url>
-    <content><![CDATA[<h1 id="解决此错误-无法将apis-com-google-common-base-Predicate-应用于-java-util-function-Predicate"><a href="#解决此错误-无法将apis-com-google-common-base-Predicate-应用于-java-util-function-Predicate" class="headerlink" title="解决此错误:无法将apis(com.google.common.base.Predicate)应用于(java.util.function.Predicate)"></a>解决此错误:无法将apis(com.google.common.base.Predicate)应用于(java.util.function.Predicate)</h1><p>在本篇博客中，我将分享我在完成黑马项目苍穹外卖导入knife4j依赖过程中遇到的报错。</p>
-<p>通过这篇博客，希望能帮助到其他遇到相似问题的，并加深自对问题的理解解决能力</p>
-<p>报错描述</p>
-<p>apis(com.google.common.base.Predicate&lt;springfox.documentation.RequestHandler&gt;)’ in ‘springfox.documentation.spring.web.plugins.ApiSelectorBuilder’ cannot be applied to ‘(java.util.function.Predicate&lt;springfox.documentation.RequestHandler&gt;)</p>
-<p>苍穹外卖提供的knife4j依赖如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">   &lt;groupId&gt;com.github.xiaoymin&lt;/groupId&gt;</span><br><span class="line">   &lt;artifactId&gt;knife4j-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">   &lt;version&gt;3.0.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-
-<p>配置类如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@Bean</span><br><span class="line">  public Docket docket() &#123;</span><br><span class="line">      ApiInfo apiInfo = new ApiInfoBuilder()</span><br><span class="line">              .title(&quot;苍穹外卖项目接口文档&quot;)</span><br><span class="line">              .version(&quot;2.0&quot;)</span><br><span class="line">              .description(&quot;苍穹外卖项目接口文档&quot;)</span><br><span class="line">              .build();</span><br><span class="line">      Docket docket = new Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">              .apiInfo(apiInfo)</span><br><span class="line">              .select()</span><br><span class="line">              .apis(RequestHandlerSelectors.basePackage(&quot;com.sky.controller&quot;))</span><br><span class="line">              .paths(PathSelectors.any())</span><br><span class="line">              .build();</span><br><span class="line">      return docket;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>在进行调试时发现这个依赖并未生效，访问doc.hmtl为404，想着可能是版本依赖问题，所以将版本改为了3.0.3，进行编译时</p>
-<p>apis(RequestHandlerSelectors.basePackage(“com.sky.controller”))出现报错，apis(com.google.common.base.Predicate&lt;springfox.documentation.RequestHandler&gt;)’ in ‘springfox.documentation.spring.web.plugins.ApiSelectorBuilder’ cannot be applied to ‘(java.util.function.Predicate&lt;springfox.documentation.RequestHandler&gt;)传入参数与需要类型不一致导致，于是进行类型强转发现也没有用，于是查看pom.xml文件，发现导入了swagger2依赖，经过查询发现不能混合Springfox 2.9.2和knife4j依赖 -&gt;删除springfox启动程序，reload后成功启动。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;2.9.2&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-
-<p>由于Knife4j 使用了 Java 8 函数库，而 springfox-swagger2 使用了 Guava 类库。在旧版本的 springfox-swagger2（例如2.9.2版本）中，<code>RequestHandlerSelectors.basePackage</code>方法期望传入<code>com.google.common.base.Predicate&lt;springfox.documentation.RequestHandler&gt;</code>而不是<code>java.util.function.Predicate&lt;springfox.documentation.RequestHandler&gt;</code>。</p>
-<p>通过以上方法，成功解决了这个报错，并顺进行了接口调试。希望这个经验可以对你有所帮助，如果有任何疑问或其他解决方法欢迎在评论中！</p>
-]]></content>
   </entry>
   <entry>
     <title>黑马Python学习笔记</title>
