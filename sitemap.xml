@@ -74,7 +74,7 @@
 
   
   <url>
-    <loc>https://bennettg6.gitee.io/myblog/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/</loc>
+    <loc>https://bennettg6.gitee.io/myblog/categories/java/</loc>
     <lastmod>2024-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -88,7 +88,7 @@
   </url>
   
   <url>
-    <loc>https://bennettg6.gitee.io/myblog/categories/java/</loc>
+    <loc>https://bennettg6.gitee.io/myblog/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/</loc>
     <lastmod>2024-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
