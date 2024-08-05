@@ -6,6 +6,6 @@ https://bennettg6.gitee.io/myblog/tags/index.html
 https://bennettg6.gitee.io/myblog/categories/index.html
 https://bennettg6.gitee.io/myblog
 https://bennettg6.gitee.io/myblog/tags/Python/
-https://bennettg6.gitee.io/myblog/categories/java/
 https://bennettg6.gitee.io/myblog/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/
+https://bennettg6.gitee.io/myblog/categories/java/
 https://bennettg6.gitee.io/myblog/categories/Python/
