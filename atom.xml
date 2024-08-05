@@ -3,11 +3,11 @@
   <title>Bennett の BLOG</title>
   
   <subtitle>鱼乘于水，鸟乘于风，草木乘于时</subtitle>
-  <link href="https://bennettg6.gitee.io/myblog/atom.xml" rel="self"/>
+  <link href="https://bennettgao.github.io/atom.xml" rel="self"/>
   
-  <link href="https://bennettg6.gitee.io/myblog/"/>
+  <link href="https://bennettgao.github.io/"/>
   <updated>2024-08-05T14:41:17.525Z</updated>
-  <id>https://bennettg6.gitee.io/myblog/</id>
+  <id>https://bennettgao.github.io/</id>
   
   <author>
     <name>Bennett Gao</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>解决此错误:无法将apis(com.google.common.base.Predicate)应用于(java.util.function.Predicate)</title>
-    <link href="https://bennettg6.gitee.io/myblog/2024/04/06/swagger%E6%8A%A5%E9%94%99/"/>
-    <id>https://bennettg6.gitee.io/myblog/2024/04/06/swagger%E6%8A%A5%E9%94%99/</id>
+    <link href="https://bennettgao.github.io/2024/04/06/swagger%E6%8A%A5%E9%94%99/"/>
+    <id>https://bennettgao.github.io/2024/04/06/swagger%E6%8A%A5%E9%94%99/</id>
     <published>2024-04-06T07:02:03.970Z</published>
     <updated>2024-08-05T14:41:17.525Z</updated>
     
@@ -30,15 +30,15 @@
     
     
     
-    <category term="java" scheme="https://bennettg6.gitee.io/myblog/categories/java/"/>
+    <category term="java" scheme="https://bennettgao.github.io/categories/java/"/>
     
     
   </entry>
   
   <entry>
     <title>Linux基础环境配置</title>
-    <link href="https://bennettg6.gitee.io/myblog/2023/09/13/Linux%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/"/>
-    <id>https://bennettg6.gitee.io/myblog/2023/09/13/Linux%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/</id>
+    <link href="https://bennettgao.github.io/2023/09/13/Linux%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/"/>
+    <id>https://bennettgao.github.io/2023/09/13/Linux%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C/</id>
     <published>2023-09-13T00:22:18.444Z</published>
     <updated>2023-09-13T00:24:13.247Z</updated>
     
@@ -49,15 +49,15 @@
     
     
     
-    <category term="大数据" scheme="https://bennettg6.gitee.io/myblog/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    <category term="大数据" scheme="https://bennettgao.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
     
   </entry>
   
   <entry>
     <title>java基础学习笔记</title>
-    <link href="https://bennettg6.gitee.io/myblog/2023/08/21/java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/"/>
-    <id>https://bennettg6.gitee.io/myblog/2023/08/21/java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/</id>
+    <link href="https://bennettgao.github.io/2023/08/21/java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/"/>
+    <id>https://bennettgao.github.io/2023/08/21/java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/</id>
     <published>2023-08-21T08:15:30.795Z</published>
     <updated>2023-09-12T12:05:11.291Z</updated>
     
@@ -68,15 +68,15 @@
     
     
     
-    <category term="java" scheme="https://bennettg6.gitee.io/myblog/categories/java/"/>
+    <category term="java" scheme="https://bennettgao.github.io/categories/java/"/>
     
     
   </entry>
   
   <entry>
     <title>黑马Python学习笔记</title>
-    <link href="https://bennettg6.gitee.io/myblog/2023/08/15/%E9%BB%91%E9%A9%ACPython%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>https://bennettg6.gitee.io/myblog/2023/08/15/%E9%BB%91%E9%A9%ACPython%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <link href="https://bennettgao.github.io/2023/08/15/%E9%BB%91%E9%A9%ACPython%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://bennettgao.github.io/2023/08/15/%E9%BB%91%E9%A9%ACPython%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
     <published>2023-08-15T00:12:28.000Z</published>
     <updated>2023-09-12T12:08:21.161Z</updated>
     
@@ -87,10 +87,10 @@
     
     
     
-    <category term="Python" scheme="https://bennettg6.gitee.io/myblog/categories/Python/"/>
+    <category term="Python" scheme="https://bennettgao.github.io/categories/Python/"/>
     
     
-    <category term="Python" scheme="https://bennettg6.gitee.io/myblog/tags/Python/"/>
+    <category term="Python" scheme="https://bennettgao.github.io/tags/Python/"/>
     
   </entry>
   
