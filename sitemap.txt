@@ -7,5 +7,5 @@ https://bennettgao.github.io/categories/index.html
 https://bennettgao.github.io/
 https://bennettgao.github.io/tags/Python/
 https://bennettgao.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/
-https://bennettgao.github.io/categories/Python/
 https://bennettgao.github.io/categories/java/
+https://bennettgao.github.io/categories/Python/
