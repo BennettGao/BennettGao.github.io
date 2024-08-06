@@ -268,9 +268,9 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><meta name="referrer" content="no-referrer" />
+    <div class="post-body" itemprop="articleBody"><meta name="referrer" content="no-referrer">
 
-<meta name="referrer" content="no-referrer" />
+<meta name="referrer" content="no-referrer">
 
 <h3 id="Java语言概述"><a href="#Java语言概述" class="headerlink" title="Java语言概述"></a>Java语言概述</h3><h4 id="Java-语言的产生、应用前景和特点；（了解）"><a href="#Java-语言的产生、应用前景和特点；（了解）" class="headerlink" title="Java 语言的产生、应用前景和特点；（了解）"></a>Java 语言的产生、应用前景和特点；（了解）</h4><p>Java语言是由Sun Microsystems公司于1995年推出的一种面向对象编程语言，其产生源于对嵌入式设备和网络应用的需求。Java拥有跨平台、高效性、安全性等优点，被广泛应用于Web开发、企业级应用开发、移动应用开发、游戏开发等领域。</p>
 <p>Java语言的主要特点包括：</p>
@@ -1034,7 +1034,7 @@ public void setSchool(String school) &#123;
 </ul>
 <p>除了上述实现类之外，还有一些其他的Set实现类，如EnumSet、CopyOnWriteArraySet等，它们都继承自Set接口，并提供了特定的功能。</p>
 <p>Set接口提供了很多常用的方法，例如：add()、remove()、contains()、size()、isEmpty()等，它们都遵循了Java集合框架的规范。在使用Set时，建议先根据具体需求选择合适的实现类，再根据需要选择合适的方法进行操作。</p>
-<p>示例代码：<br>    Set<String> set &#x3D; new HashSet&lt;&gt;();<br>    set.add(“apple”);<br>    set.add(“banana”);<br>    set.add(“orange”);<br>    System.out.println(set); &#x2F;&#x2F; 输出 [orange, apple, banana]<br>    set.remove(“banana”);<br>    System.out.println(set); &#x2F;&#x2F; 输出 [orange, apple]<br>    System.out.println(set.contains(“apple”)); &#x2F;&#x2F; 输出 true</p>
+<p>示例代码：<br>    Set<String> set &#x3D; new HashSet&lt;&gt;();<br>    set.add(“apple”);<br>    set.add(“banana”);<br>    set.add(“orange”);<br>    System.out.println(set); &#x2F;&#x2F; 输出 [orange, apple, banana]<br>    set.remove(“banana”);<br>    System.out.println(set); &#x2F;&#x2F; 输出 [orange, apple]<br>    System.out.println(set.contains(“apple”)); &#x2F;&#x2F; 输出 true</String></p>
 <p>需要注意的是，在使用集合类时，应该根据具体需求选择合适的实现类。同时，对于需要保证线程安全的场景，应该考虑使用线程安全的集合类（如ConcurrentHashMap和CopyOnWriteArrayList等）。</p>
 <p>3.Map类</p>
 <p>Map是一种键值对（key-value）映射的集合，每个键只能对应一个值。常用的Map实现类有HashMap和TreeMap。其中，HashMap是基于哈希表实现的，支持快速查找，而TreeMap是基于红黑树实现的，支持按键排序。</p>
@@ -1866,7 +1866,7 @@ public class GridBagLayoutDemo &#123;
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">executor.shutdown(); // 平滑关闭线程池</span><br><span class="line">// 或者</span><br><span class="line">executor.shutdownNow(); // 强制关闭线程池</span><br></pre></td></tr></table></figure>
 
 <p>需要注意的是，在使用线程池时应该合理地设置核心线程数、最大线程数和任务队列大小，以避免因线程过多或任务过多导致系统资源不足或死锁等问题。同时，也应该遵循线程安全的原则来编写并发程序，以保证程序的正确性和稳定性。</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="Java网络编程"><a href="#Java网络编程" class="headerlink" title="Java网络编程"></a>Java网络编程</h3><h4 id="网络通信协议-了解"><a href="#网络通信协议-了解" class="headerlink" title="网络通信协议(了解)"></a>网络通信协议(了解)</h4><p>网络通信协议是计算机网络中用于规定数据传输格式和传输方式的约定，是保证网络通信正确、高效、安全的基础。常见的网络通信协议有以下几种：</p>
+<h3 id><a href="#" class="headerlink" title></a></h3><h3 id="Java网络编程"><a href="#Java网络编程" class="headerlink" title="Java网络编程"></a>Java网络编程</h3><h4 id="网络通信协议-了解"><a href="#网络通信协议-了解" class="headerlink" title="网络通信协议(了解)"></a>网络通信协议(了解)</h4><p>网络通信协议是计算机网络中用于规定数据传输格式和传输方式的约定，是保证网络通信正确、高效、安全的基础。常见的网络通信协议有以下几种：</p>
 <ol>
 <li>TCP&#x2F;IP协议</li>
 </ol>
@@ -2201,18 +2201,10 @@ public class GridBagLayoutDemo &#123;
 
 
 
-{# 鼠标点击特效 #}
-{% if theme.cursor_effect == "fireworks" %}
-  <script async src="/js/cursor/fireworks.js"></script>
-{% elseif theme.cursor_effect == "explosion" %}
-  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
-  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
-  <script async src="/js/cursor/explosion.min.js"></script>
-{% elseif theme.cursor_effect == "love" %}
+
+
   <script async src="/js/cursor/love.min.js"></script>
-{% elseif theme.cursor_effect == "text" %}
-  <script async src="/js/cursor/text.js"></script>
-{% endif %}
+
 
 
   <!-- 樱花特效 -->

@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107501.png">
 <meta property="og:image" content="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107531.png">
 <meta property="og:image" content="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107539.png">
-<meta property="og:image" content="d:\Desktop\Java%E5%AD%A6%E4%B9%A0\%E9%BB%91%E9%A9%ACJavaweb%E6%96%87%E6%A1%A3\day04-Maven-SpringBootWeb%E5%85%A5%E9%97%A8\02. SpringBootWeb%E5%85%A5%E9%97%A8\assets\image-20221201184702136.png">
+<meta property="og:image" content="https://bennettgao.github.io/.io//Desktop/Java%E5%AD%A6%E4%B9%A0/%E9%BB%91%E9%A9%ACJavaweb%E6%96%87%E6%A1%A3/day04-Maven-SpringBootWeb%E5%85%A5%E9%97%A8/02.%20SpringBootWeb%E5%85%A5%E9%97%A8/assets/image-20221201184702136.png">
 <meta property="og:image" content="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107553.png">
 <meta property="og:image" content="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107616.png">
 <meta property="og:image" content="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107663.png">
@@ -321,10 +321,10 @@
 <p>第2步：定义HelloController类，添加方法hello，并添加注解</p>
 <p>第3步：测试运行</p>
 <h4 id="1-2-1-创建SpringBoot工程（需要联网）"><a href="#1-2-1-创建SpringBoot工程（需要联网）" class="headerlink" title="1.2.1 创建SpringBoot工程（需要联网）"></a>1.2.1 创建SpringBoot工程（需要联网）</h4><p>基于Spring官方骨架，创建SpringBoot工程。</p>
-<img src="D:\Desktop\Java学习\黑马Javaweb文档\day04-Maven-SpringBootWeb入门\02. SpringBootWeb入门\assets\image-20221201184702136.png" alt="image-20221201184702136" style="zoom:80%;" />
+<img src="/.io//Desktop\Java学习\黑马Javaweb文档\day04-Maven-SpringBootWeb入门\02. SpringBootWeb入门\assets\image-20221201184702136.png" alt="image-20221201184702136" style="zoom:80%;">
 
 <p>基本信息描述完毕之后，勾选web开发相关依赖。</p>
-<img src="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107553.png" alt="image-20221201184850248" style="zoom:80%;" />
+<img src="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107553.png" alt="image-20221201184850248" style="zoom:80%;">
 
 <p>点击Finish之后，就会联网创建这个SpringBoot工程，创建好之后，结构如下：</p>
 <ul>
@@ -332,10 +332,10 @@
 </ul>
 <p>![image-20221201185910596](D:\Desktop\Java学习\黑马Javaweb文档\day04-Maven-SpringBootWeb入门\02. SpringBootWeb入门\assets\image-20221201185910596.png) </p>
 <h4 id="1-2-2-定义请求处理类"><a href="#1-2-2-定义请求处理类" class="headerlink" title="1.2.2 定义请求处理类"></a>1.2.2 定义请求处理类</h4><p>在com.itheima这个包下创建一个子包controller</p>
-<img src="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107616.png" alt="image-20221201190541295" style="zoom:80%;" />
+<img src="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107616.png" alt="image-20221201190541295" style="zoom:80%;">
 
 <p>然后在controller包下新建一个类：HelloController</p>
-<img src="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107663.png" alt="image-20221201190825439" style="zoom:80%;" />
+<img src="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107663.png" alt="image-20221201190825439" style="zoom:80%;">
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.itheima.controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/hello&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">hello</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello World ~&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Hello World ~&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
 
@@ -345,7 +345,7 @@
 <p><img src="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107375.png" alt="image-20221201191028124"> </p>
 <p>![image-20221201191348924](D:\Desktop\Java学习\黑马Javaweb文档\day04-Maven-SpringBootWeb入门\02. SpringBootWeb入门\assets\image-20221201191348924.png) </p>
 <p>打开浏览器，输入 <code>http://localhost:8080/hello</code></p>
-<img src="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107418.png" style="zoom:80%;" />
+<img src="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107418.png" style="zoom:80%;">
 
 
 
@@ -468,35 +468,35 @@
 </thead>
 <tbody><tr>
 <td align="center"><strong>GET</strong></td>
-<td align="left">获取资源。<br/>向特定的资源发出请求。例：<a target="_blank" rel="noopener" href="http://www.baidu.com/s?wd=itheima">http://www.baidu.com/s?wd=itheima</a></td>
+<td align="left">获取资源。<br>向特定的资源发出请求。例：<a target="_blank" rel="noopener" href="http://www.baidu.com/s?wd=itheima">http://www.baidu.com/s?wd=itheima</a></td>
 </tr>
 <tr>
 <td align="center"><strong>POST</strong></td>
-<td align="left">传输实体主体。<br/>向指定资源提交数据进行处理请求（例：上传文件），数据被包含在请求体中。</td>
+<td align="left">传输实体主体。<br>向指定资源提交数据进行处理请求（例：上传文件），数据被包含在请求体中。</td>
 </tr>
 <tr>
 <td align="center">OPTIONS</td>
-<td align="left">返回服务器针对特定资源所支持的HTTP请求方式。<br/>因为并不是所有的服务器都支持规定的方法，为了安全有些服务器可能会禁止掉一些方法，例如：DELETE、PUT等。那么OPTIONS就是用来询问服务器支持的方法。</td>
+<td align="left">返回服务器针对特定资源所支持的HTTP请求方式。<br>因为并不是所有的服务器都支持规定的方法，为了安全有些服务器可能会禁止掉一些方法，例如：DELETE、PUT等。那么OPTIONS就是用来询问服务器支持的方法。</td>
 </tr>
 <tr>
 <td align="center">HEAD</td>
-<td align="left">获得报文首部。<br/>HEAD方法类似GET方法，但是不同的是HEAD方法不要求返回数据。通常用于确认URI的有效性及资源更新时间等。</td>
+<td align="left">获得报文首部。<br>HEAD方法类似GET方法，但是不同的是HEAD方法不要求返回数据。通常用于确认URI的有效性及资源更新时间等。</td>
 </tr>
 <tr>
 <td align="center">PUT</td>
-<td align="left">传输文件。<br/>PUT方法用来传输文件。类似FTP协议，文件内容包含在请求报文的实体中，然后请求保存到URL指定的服务器位置。</td>
+<td align="left">传输文件。<br>PUT方法用来传输文件。类似FTP协议，文件内容包含在请求报文的实体中，然后请求保存到URL指定的服务器位置。</td>
 </tr>
 <tr>
 <td align="center">DELETE</td>
-<td align="left">删除文件。<br/>请求服务器删除Request-URI所标识的资源</td>
+<td align="left">删除文件。<br>请求服务器删除Request-URI所标识的资源</td>
 </tr>
 <tr>
 <td align="center">TRACE</td>
-<td align="left">追踪路径。<br/>回显服务器收到的请求，主要用于测试或诊断</td>
+<td align="left">追踪路径。<br>回显服务器收到的请求，主要用于测试或诊断</td>
 </tr>
 <tr>
 <td align="center">CONNECT</td>
-<td align="left">要求用隧道协议连接代理。<br/>HTTP&#x2F;1.1协议中预留给能够将连接改为管道方式的代理服务器</td>
+<td align="left">要求用隧道协议连接代理。<br>HTTP&#x2F;1.1协议中预留给能够将连接改为管道方式的代理服务器</td>
 </tr>
 </tbody></table>
 <p>在我们实际应用中常用的也就是 ：<strong>GET、POST</strong></p>
@@ -567,7 +567,7 @@
 </thead>
 <tbody><tr>
 <td>请求参数</td>
-<td>请求参数在请求行中。<br/>例：&#x2F;brand&#x2F;findAll?name&#x3D;OPPO&amp;status&#x3D;1</td>
+<td>请求参数在请求行中。<br>例：&#x2F;brand&#x2F;findAll?name&#x3D;OPPO&amp;status&#x3D;1</td>
 <td>请求参数在请求体中</td>
 </tr>
 <tr>
@@ -782,7 +782,7 @@
 </ul>
 </li>
 </ul>
-<img src="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107456.png" alt="image-20220825084017185" style="zoom:80%;" /> 
+<img src="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107456.png" alt="image-20220825084017185" style="zoom:80%;"> 
 
 <blockquote>
 <p>注: HTTP协议默认端口号为80，如果将Tomcat端口号改为80，则将来访问Tomcat时，将不用输入端口号。</p>
@@ -829,7 +829,7 @@
 </blockquote>
 <h4 id="3-3-2-SpringBoot父工程"><a href="#3-3-2-SpringBoot父工程" class="headerlink" title="3.3.2 SpringBoot父工程"></a>3.3.2 SpringBoot父工程</h4><p>在我们之前开发的SpringBoot入门案例中，我们通过maven引入的依赖，是没有指定具体的依赖版本号的。</p>
 <p><img src="https://gitee.com/BennettG6/image-bed/raw/master/img/202407292107095.png" alt="image-20221202205103486"></p>
-<p>为什么没有指定<version>版本号，可以正常使用呢？</p>
+<p>为什么没有指定<version>版本号，可以正常使用呢？</version></p>
 <ul>
 <li>因为每一个SpringBoot工程，都有一个父工程。依赖的版本号，在父工程中统一管理。</li>
 </ul>
@@ -943,18 +943,10 @@
 
 
 
-{# 鼠标点击特效 #}
-{% if theme.cursor_effect == "fireworks" %}
-  <script async src="/js/cursor/fireworks.js"></script>
-{% elseif theme.cursor_effect == "explosion" %}
-  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
-  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
-  <script async src="/js/cursor/explosion.min.js"></script>
-{% elseif theme.cursor_effect == "love" %}
+
+
   <script async src="/js/cursor/love.min.js"></script>
-{% elseif theme.cursor_effect == "text" %}
-  <script async src="/js/cursor/text.js"></script>
-{% endif %}
+
 
 
   <!-- 樱花特效 -->
