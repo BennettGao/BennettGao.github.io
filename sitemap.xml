@@ -2,6 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bennettgao.github.io/2024/01/11/%E5%93%8D%E5%BA%94%E7%8A%B6%E6%80%81%E7%A0%81/</loc>
+    
+    <lastmod>2024-08-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bennettgao.github.io/2024/07/12/docker%E9%83%A8%E7%BD%B2%E7%9A%84mysql%E7%94%B1%E4%BA%8E%E7%AA%81%E7%84%B6%E6%96%AD%E7%94%B5%E4%B8%80%E7%9B%B4%E5%A4%84%E4%BA%8E%20Restarting%E7%8A%B6%E6%80%81/</loc>
+    
+    <lastmod>2024-08-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bennettgao.github.io/2024/07/12/docker%E9%83%A8%E7%BD%B2%E7%9A%84mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D/</loc>
+    
+    <lastmod>2024-08-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bennettgao.github.io/2024/08/03/Redis%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3/</loc>
+    
+    <lastmod>2024-08-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bennettgao.github.io/2024/07/29/SpringBootWeb%E5%85%A5%E9%97%A8/</loc>
+    
+    <lastmod>2024-08-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bennettgao.github.io/2024/06/02/%E8%A7%A3%E5%86%B3%E5%BC%95%E5%85%A5sentinel%E4%BE%9D%E8%B5%96%E6%97%B6%E4%B8%8Eweb%E4%BE%9D%E8%B5%96%E5%BD%A2%E6%88%90%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
+    
+    <lastmod>2024-08-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bennettgao.github.io/2024/07/09/SpringCloud%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3%EF%BC%88%E4%B8%8B%EF%BC%89/</loc>
+    
+    <lastmod>2024-08-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bennettgao.github.io/2024/07/07/SpringCloud%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3%EF%BC%88%E4%B8%8A%EF%BC%89/</loc>
+    
+    <lastmod>2024-08-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://bennettgao.github.io/2024/04/06/swagger%E6%8A%A5%E9%94%99/</loc>
     
     <lastmod>2024-08-05</lastmod>
@@ -81,7 +153,28 @@
   </url>
   
   <url>
+    <loc>https://bennettgao.github.io/categories/Redis/</loc>
+    <lastmod>2024-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://bennettgao.github.io/categories/java/</loc>
+    <lastmod>2024-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bennettgao.github.io/categories/docker/</loc>
+    <lastmod>2024-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bennettgao.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2024-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

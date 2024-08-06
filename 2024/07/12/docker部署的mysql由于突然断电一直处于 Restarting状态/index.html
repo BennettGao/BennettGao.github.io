@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"bennettgao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="docker学习笔记，欢迎学习与交流">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker部署mysql数据库数据恢复问题（1）">
+<meta property="og:url" content="https://bennettgao.github.io/2024/07/12/docker%E9%83%A8%E7%BD%B2%E7%9A%84mysql%E7%94%B1%E4%BA%8E%E7%AA%81%E7%84%B6%E6%96%AD%E7%94%B5%E4%B8%80%E7%9B%B4%E5%A4%84%E4%BA%8E%20Restarting%E7%8A%B6%E6%80%81/index.html">
+<meta property="og:site_name" content="Bennett の BLOG">
+<meta property="og:description" content="docker学习笔记，欢迎学习与交流">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/BennettG6/image-bed/raw/master/img/202407121437397.png">
+<meta property="article:published_time" content="2024-07-12T03:09:21.786Z">
+<meta property="article:modified_time" content="2024-08-06T09:50:25.931Z">
+<meta property="article:author" content="Bennett Gao">
+<meta property="article:tag" content="技术学习与分享">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/BennettG6/image-bed/raw/master/img/202407121437397.png">
+
+
+<link rel="canonical" href="https://bennettgao.github.io/2024/07/12/docker%E9%83%A8%E7%BD%B2%E7%9A%84mysql%E7%94%B1%E4%BA%8E%E7%AA%81%E7%84%B6%E6%96%AD%E7%94%B5%E4%B8%80%E7%9B%B4%E5%A4%84%E4%BA%8E%20Restarting%E7%8A%B6%E6%80%81/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://bennettgao.github.io/2024/07/12/docker%E9%83%A8%E7%BD%B2%E7%9A%84mysql%E7%94%B1%E4%BA%8E%E7%AA%81%E7%84%B6%E6%96%AD%E7%94%B5%E4%B8%80%E7%9B%B4%E5%A4%84%E4%BA%8E%20Restarting%E7%8A%B6%E6%80%81/","path":"2024/07/12/docker部署的mysql由于突然断电一直处于 Restarting状态/","title":"docker部署mysql数据库数据恢复问题（1）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>docker部署mysql数据库数据恢复问题（1） | Bennett の BLOG</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Bennett の BLOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Bennett の BLOG</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">鱼乘于水，鸟乘于风，草木乘于时</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%87%BA%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text">问题出现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">解决过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bennett Gao"
+      src="/images/HeadSculpture.jpg">
+  <p class="site-author-name" itemprop="name">Bennett Gao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bennettgao.github.io/2024/07/12/docker%E9%83%A8%E7%BD%B2%E7%9A%84mysql%E7%94%B1%E4%BA%8E%E7%AA%81%E7%84%B6%E6%96%AD%E7%94%B5%E4%B8%80%E7%9B%B4%E5%A4%84%E4%BA%8E%20Restarting%E7%8A%B6%E6%80%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/HeadSculpture.jpg">
+      <meta itemprop="name" content="Bennett Gao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bennett の BLOG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="docker部署mysql数据库数据恢复问题（1） | Bennett の BLOG">
+      <meta itemprop="description" content="docker学习笔记，欢迎学习与交流">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          docker部署mysql数据库数据恢复问题（1）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-12 11:09:21" itemprop="dateCreated datePublished" datetime="2024-07-12T11:09:21+08:00">2024-07-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-06 17:50:25" itemprop="dateModified" datetime="2024-08-06T17:50:25+08:00">2024-08-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">docker学习笔记，欢迎学习与交流</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h5 id="问题出现"><a href="#问题出现" class="headerlink" title="问题出现"></a>问题出现</h5><p>在学习后端开发的过程中，今天突然发现自己在docker上部署的mysql突然连不上了，</p>
+<p>通过docker ps  -a 命令查看发现mysql一直出于Restarting状态，重启了mysql容器，也还是没解决问题（下图中hm-mysql处于Restarting状态），于是小小的记录一下解决的方法：</p>
+<p><img src="https://gitee.com/BennettG6/image-bed/raw/master/img/202407121437397.png" alt="image-20240712143733966"></p>
+<h5 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h5><p>当Docker部署的MySQL一直处于Restarting状态时，这通常意味着MySQL容器在启动过程中遇到了问题。这可能是由于配置错误、端口冲突或其他原因导致的。为了解决这个问题，我们需要查看Docker日志以获取更多详细信息，并检查MySQL容器的配置。</p>
+<p>通过&#x3D;&#x3D;docker logs -f hm-mysql&#x3D;&#x3D; 命令来查看日志：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">The manual page at http://dev.mysql.com/doc/mysql/en/crashing.html contains</span><br><span class="line">information that should help you find out what is causing the crash.</span><br><span class="line">2024-07-12 10:59:02+08:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.</span><br><span class="line">2024-07-12 10:59:02+08:00 [Note] [Entrypoint]: Switching to dedicated user &#x27;mysql&#x27;</span><br><span class="line">2024-07-12 10:59:02+08:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.</span><br><span class="line">&#x27;/var/lib/mysql/mysql.sock&#x27; -&gt; &#x27;/var/run/mysqld/mysqld.sock&#x27;</span><br><span class="line">2024-07-12T02:59:03.120616Z 0 [System] [MY-015015] [Server] MySQL Server - start.</span><br><span class="line">2024-07-12T02:59:03.338524Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1</span><br><span class="line">2024-07-12T02:59:03.350277Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.</span><br><span class="line">2024-07-12T02:59:05.197985Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.</span><br><span class="line">2024-07-12T02:59:05.440020Z 0 [System] [MY-010229] [Server] Starting XA crash recovery...</span><br><span class="line">2024-07-12T02:59:05.467112Z 0 [System] [MY-010232] [Server] XA crash recovery finished.</span><br><span class="line">2024-07-12T02:59:05.507320Z 0 [ERROR] [MY-013183] [InnoDB] Assertion failure: trx0types.h:542:m_rsegs_n &lt; 2 thread 140279654897216</span><br><span class="line">InnoDB: We intentionally generate a memory trap.</span><br><span class="line">InnoDB: Submit a detailed bug report to http://bugs.mysql.com.</span><br><span class="line">InnoDB: If you get repeated assertion failures or crashes, even</span><br><span class="line">InnoDB: immediately after the mysqld startup, there may be</span><br><span class="line">InnoDB: corruption in the InnoDB tablespace. Please refer to</span><br><span class="line">InnoDB: http://dev.mysql.com/doc/refman/8.4/en/forcing-innodb-recovery.html</span><br><span class="line">InnoDB: about forcing recovery.</span><br><span class="line">2024-07-12T02:59:05Z UTC - mysqld got signal 6 ;</span><br><span class="line">Most likely, you have hit a bug, but this error can also be caused by malfunctioning hardware.</span><br><span class="line">BuildID[sha1]=353ae40c5329277f3033302aee25ef64367c8a66</span><br><span class="line">Thread pointer: 0x7f9570000df0</span><br><span class="line">Attempting backtrace. You can use the following information to find out</span><br><span class="line">where mysqld died. If you see no messages after this, something went</span><br><span class="line">terribly wrong...</span><br><span class="line">stack_bottom = 7f9566ffcb00 thread_stack 0x100000</span><br><span class="line">2024-07-12T02:59:05.600161Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.</span><br><span class="line">2024-07-12T02:59:05.600219Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.</span><br><span class="line">2024-07-12T02:59:05.616580Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location &#x27;/var/run/mysqld&#x27; in the path is accessible to all OS users. Consider choosing a different directory.</span><br></pre></td></tr></table></figure>
+
+<p>在日志中发现，日志显示了一个问题：</p>
+<p>&#x3D;&#x3D;2024-07-12T02:59:05.507320Z 0 [ERROR] [MY-013183] [InnoDB] Assertion failure: trx0types.h:542:m_rsegs_n &lt; 2 thread 140279654897216&#x3D;&#x3D;</p>
+<p>InnoDB 出现了断言失败。这可能是软件错误或者硬件故障导致的。</p>
+<p>具体来说，在 InnoDB 中检测到一个违反断言的情况（trx0types.h:542:m_rsegs_n &lt; 2），并提示可能存在表空间损坏，建议参考相关文档进行强制恢复等操作。同时，还提到可能遇到了一个错误，也可能是硬件故障引起的。</p>
+<p>于是上网开始查找资料</p>
+<blockquote>
+<p>文章地址：<a target="_blank" rel="noopener" href="http://www.linuxeye.com/database/2830.html">http://www.linuxeye.com/database/2830.html</a> （MySQL意外断电，InnoDB数据库恢复）</p>
+<p>分析日志后发现，数据库无法重启的原因是因为ibdata1文件损坏，重启后无法正常恢复。<br>现在我们就需要跳过恢复步骤，修改my.cnf文件，在my.cnf中的[mysqld]中添加</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">innodb_force_recovery = 6</span><br><span class="line">innodb_purge_threads = 0</span><br></pre></td></tr></table></figure>
+
+<p>innodbforcerecovery可以设置为1-6,大的数字包含前面所有数字的影响。<br>\1. (SRVFORCEIGNORECORRUPT):忽略检查到的corrupt页。<br>\2. (SRVFORCENOBACKGROUND):阻止主线程的运行，如主线程需要执行full purge操作，会导致crash。<br>\3. (SRVFORCENOTRXUNDO):不执行事务回滚操作。<br>\4. (SRVFORCENOIBUFMERGE):不执行插入缓冲的合并操作。<br>\5. (SRVFORCENOUNDOLOGSCAN):不查看重做日志，InnoDB存储引擎会将未提交的事务视为已提交。<br>\6. (SRVFORCENOLOG_REDO):不执行前滚的操作。</p>
+</blockquote>
+<p>于是我修改挂载在本地目录mysql&#x2F;conf下的hm.cnf配置文件，加上上述配置，重启mysql容器后，发现能远程连接上我的mysql容器了，问题解决。</p>
+<p>但是后续mysql容器如果出现读写问题，容器数据库需要恢复可以参考下面这篇文章：</p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>后来回想问题发生的原因，是我之前虚拟机没关闭的情况下就把电脑关机了，导致mysql容器意外断电导致了<code>Innodb</code>的文件损坏，出现了此次问题。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/07/09/SpringCloud%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3%EF%BC%88%E4%B8%8B%EF%BC%89/" rel="prev" title="SpringCloud微服务学习（下）">
+                  <i class="fa fa-angle-left"></i> SpringCloud微服务学习（下）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/07/12/docker%E9%83%A8%E7%BD%B2%E7%9A%84mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D/" rel="next" title="docker部署mysql数据库数据恢复">
+                  docker部署mysql数据库数据恢复 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Bennett Gao</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">80k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:50</span>
+  </span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+{# 鼠标点击特效 #}
+{% if theme.cursor_effect == "fireworks" %}
+  <script async src="/js/cursor/fireworks.js"></script>
+{% elseif theme.cursor_effect == "explosion" %}
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+  <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  <script async src="/js/cursor/explosion.min.js"></script>
+{% elseif theme.cursor_effect == "love" %}
+  <script async src="/js/cursor/love.min.js"></script>
+{% elseif theme.cursor_effect == "text" %}
+  <script async src="/js/cursor/text.js"></script>
+{% endif %}
+
+
+  <!-- 樱花特效 -->
+  
+      <script async src="/js/fairyDustCursor.js"></script>
+  
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
